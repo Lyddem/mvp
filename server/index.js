@@ -1,8 +1,9 @@
 const express = require('express');
 const mysql = require('mysql');
 const app = express();
-
 const PORT = process.env.PORT || 8080;
+
+app.use(express.static('public'));
 
 //db config
 const connection = mysql.createConnection({
@@ -17,7 +18,7 @@ const connection = mysql.createConnection({
 // });
 
 app.get('/', function(req, res) {
-  res.send('hello from server');
+  // res.send('server');
 });
 
 app.listen(PORT, function(req, res) {

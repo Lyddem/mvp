@@ -9772,8 +9772,8 @@ var App = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
-        'Hello from INDEX'
+        { id: 'header' },
+        'Hello from index.jsx!'
       );
     }
   }]);

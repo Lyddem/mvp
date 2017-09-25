@@ -6,8 +6,8 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
-        Hello from INDEX
+      <div id = 'header'>
+        Hello from index.jsx!
       </div>
     );
   }
