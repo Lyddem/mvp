@@ -4,7 +4,9 @@
   "description": "<!--  > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.",
   "main": "index.js",
   "scripts": {
+    "dev-tool": "source-map",
     "start": "nodemon server/index.js",
+    "build": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,8 +20,16 @@
   },
   "homepage": "https://github.com/Lyddem/hrr26-mvp#readme",
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "express": "^4.15.5",
     "mysql": "^2.14.1",
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.12.1",
+    "path": "^0.12.7",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "webpack": "^3.6.0"
   }
 }
