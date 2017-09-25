@@ -4,7 +4,6 @@
   "description": "<!--  > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.",
   "main": "index.js",
   "scripts": {
-    "dev-tool": "source-map",
     "start": "nodemon server/index.js",
     "build": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
