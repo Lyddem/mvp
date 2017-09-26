@@ -1,3 +1,19 @@
 #header {
   text-align: center;
+  padding: 40px;
+}
+
+#cta {
+  height: 500px;
+  width: 500px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+#inputText {
+  height: 70px;
+  width: 350px;
+  margin: left;
+  border: 1px solid black;
 }
