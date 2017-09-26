@@ -17,8 +17,18 @@ const connection = mysql.createConnection({
 });
 
 app.post('/submitText', function(req, res) {
+
+  var query = `INSERT INTO words (word) VALUES ("${req.body.data}")`
+  connection.query(query, function(result,err){
+    if(err){
+      console.log('err', err);
+    } else {
+      res.send(req.data);
+    }
+  })
+
   console.log('REQ BODY', req.body.data);
-  res.send(req.body)
+  res.send(req.body.data) //send back the request
 });
 
 app.get('/', function(req, res) {
@@ -28,3 +38,4 @@ app.get('/', function(req, res) {
 app.listen(PORT, function(req, res) {
   console.log('Listening on Port ', PORT);
 });
+
