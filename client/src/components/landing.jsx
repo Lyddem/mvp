@@ -9,31 +9,30 @@ class Landing extends React.Component {
     word: ''
    };
 
-   this.handleChange = this.handleChange.bind(this)
-   this.submitText = this.submitText.bind(this)
+   this.submitText = this.submitText.bind(this);
  }
 
-handleChange() {
-  alert(this.state.word);
-  console.log(this.state.word);
-}
 
-submitText(phrase){
-  // axios.post('/submitText', this.state.word);
-  // .then(function(res) {
-  //   console.log('client: posted successfully');
-  // });
-};
+
+submitText() {
+  axios.post('/submitText', {data: this.state.word})
+  .then(function(response){
+    console.log('RESPONSE', response);
+  })
+  .catch(function(err){
+    console.log(err);
+  })
+}
 
   render () {
     return (
       <div>
         <div id="cta">
-           <div id = 'header'> Memorize IT </div>
+           <div id = 'header'> Memorize IT! </div>
 
             Type in what you'd like to memorize <br /> <br />
             <input type="text" onChange={(e)=>{this.setState({word: e.target.value})}}></input>
-            <input type="submit" onClick={this.handleChange}></input> <br /><br /><br />
+            <input type="submit" onClick={this.submitText}></input> <br /><br /><br />
 
             Test Yourself!
         </div>
