@@ -33,7 +33,7 @@ app.post('/submitText', function(req, res) {
 
 app.get('/getLastWord', function(req, res){
   var query = `SELECT word FROM words WHERE id = (SELECT MAX(id) from words)`;
-  // var query = `SELECT * FROM  words`;
+
   connection.query(query, function(err, result) {
     if(err) {
       console.log(err);
@@ -42,10 +42,6 @@ app.get('/getLastWord', function(req, res){
     }
   })
 })
-
-app.get('/', function(req, res) {
-  // res.send('server');
-});
 
 app.listen(PORT, function(req, res) {
   console.log('Listening on Port ', PORT);

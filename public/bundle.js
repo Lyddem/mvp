@@ -23137,8 +23137,7 @@ var Landing = function (_React$Component) {
 
     var state = {
       word: '',
-      practice: '',
-      lastWord: ''
+      practice: ''
     };
 
     _this.submitText = _this.submitText.bind(_this);
@@ -23160,12 +23159,10 @@ var Landing = function (_React$Component) {
     value: function checkAnswer() {
       var _this2 = this;
 
-      var practice = this.state.practice; //word to compare with last word from database!
-      console.log(practice, '<--PRACTICE');
       _axios2.default.get('/getLastWord').then(function (response) {
-        console.log('response FROM CHECKANSWER', response.data[0].word);
-        _this2.setState({ lastWord: response.data[0].word });
+        //<-- sends back most recent entry
 
+        //Compare with most recently inputed word in database
         if (response.data[0].word === _this2.state.practice) {
           alert("YEA!");
         } else {
@@ -23174,11 +23171,6 @@ var Landing = function (_React$Component) {
       }).catch(function (error) {
         console.log(error);
       });
-
-      // console.log('last word')
-      // if(this.state.practice === this.state.lastWord) {
-      //   console.log('TRUE');
-      // }
     }
   }, {
     key: 'render',

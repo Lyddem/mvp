@@ -7,8 +7,7 @@ class Landing extends React.Component {
 
    var state = {
     word: '',
-    practice: '',
-    lastWord: ''
+    practice: ''
    };
 
    this.submitText = this.submitText.bind(this);
@@ -26,28 +25,20 @@ submitText() {
 }
 
 checkAnswer(){
-  var practice = this.state.practice; //word to compare with last word from database!
-  console.log(practice, '<--PRACTICE')
-  axios.get('/getLastWord')
-  .then((response) => {
-    console.log('response FROM CHECKANSWER', response.data[0].word)
-    this.setState({lastWord: response.data[0].word})
 
+  axios.get('/getLastWord')
+  .then((response) => { //<-- sends back most recent entry
+
+    //Compare with most recently inputed word in database
     if(response.data[0].word === this.state.practice) {
       alert("YEA!");
     } else {
       alert("Nope, try again!");
     }
-
   })
   .catch(function(error) {
     console.log(error);
   })
-
-  // console.log('last word')
-  // if(this.state.practice === this.state.lastWord) {
-  //   console.log('TRUE');
-  // }
 }
   render () {
     return (
