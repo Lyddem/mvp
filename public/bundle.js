@@ -23136,10 +23136,13 @@ var Landing = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Landing.__proto__ || Object.getPrototypeOf(Landing)).call(this, props));
 
     var state = {
-      word: ''
+      word: '',
+      practice: '',
+      lastWord: ''
     };
 
     _this.submitText = _this.submitText.bind(_this);
+    _this.checkAnswer = _this.checkAnswer.bind(_this);
     return _this;
   }
 
@@ -23153,9 +23156,34 @@ var Landing = function (_React$Component) {
       });
     }
   }, {
+    key: 'checkAnswer',
+    value: function checkAnswer() {
+      var _this2 = this;
+
+      var practice = this.state.practice; //word to compare with last word from database!
+      console.log(practice, '<--PRACTICE');
+      _axios2.default.get('/getLastWord').then(function (response) {
+        console.log('response FROM CHECKANSWER', response.data[0].word);
+        _this2.setState({ lastWord: response.data[0].word });
+
+        if (response.data[0].word === _this2.state.practice) {
+          alert("YEA!");
+        } else {
+          alert("Nope, try again!");
+        }
+      }).catch(function (error) {
+        console.log(error);
+      });
+
+      // console.log('last word')
+      // if(this.state.practice === this.state.lastWord) {
+      //   console.log('TRUE');
+      // }
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       return _react2.default.createElement(
         'div',
@@ -23173,14 +23201,25 @@ var Landing = function (_React$Component) {
           ' ',
           _react2.default.createElement('br', null),
           _react2.default.createElement('input', { type: 'text', onChange: function onChange(e) {
-              _this2.setState({ word: e.target.value });
+              _this3.setState({ word: e.target.value });
             } }),
           _react2.default.createElement('input', { type: 'submit', onClick: this.submitText }),
           ' ',
           _react2.default.createElement('br', null),
           _react2.default.createElement('br', null),
           _react2.default.createElement('br', null),
-          'Test Yourself!'
+          'Test Yourself!  ',
+          _react2.default.createElement('br', null),
+          ' ',
+          _react2.default.createElement('br', null),
+          _react2.default.createElement('input', { type: 'text', placeholder: 're-write your text here', onChange: function onChange(e) {
+              _this3.setState({ practice: e.target.value });
+            } }),
+          _react2.default.createElement('input', { type: 'submit', onClick: this.checkAnswer }),
+          ' ',
+          _react2.default.createElement('br', null),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement('br', null)
         )
       );
     }
