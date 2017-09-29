@@ -12,7 +12,25 @@ class Landing extends React.Component {
 
    this.submitText = this.submitText.bind(this);
    this.checkAnswer = this.checkAnswer.bind(this);
+   this.getAllWords = this.getAllWords.bind(this);
  }
+
+getAllWords() {
+  // alert('hi!');
+  axios.get('/getAllWords')
+  .then((response) => { //<-- sends back most recent entry
+    alert('response', response.data)
+    //Compare with most recently inputed word in database
+    // if(response.data[0].word === this.state.practice) {
+    //   alert("YEA!");
+    // } else {
+    //   alert("Nope, try again!");
+    // }
+  })
+  .catch(function(error) {
+    console.log(error);
+  })
+}
 
 submitText() {
   axios.post('/submitText', {data: this.state.word})
@@ -53,6 +71,10 @@ checkAnswer(){
             Test Yourself!  <br /> <br />
              <input type="text" placeholder="re-write your text here" onChange={(e)=>{this.setState({practice:e.target.value})}}></input>
             <input type="submit" onClick={this.checkAnswer}></input> <br /><br /><br />
+
+            Previous Words/Phrases &nbsp; &nbsp;
+            <button type="submit" onClick={this.getAllWords}> Click </button>
+
         </div>
       </div>
     );

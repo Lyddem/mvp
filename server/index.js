@@ -43,6 +43,18 @@ app.get('/getLastWord', function(req, res){
   })
 })
 
+app.get('/getAllWords', function(req, res){
+  var query = `SELECT * FROM words`;
+
+  connection.query(query, function(err, result) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  })
+})
+
 app.listen(PORT, function(req, res) {
   console.log('Listening on Port ', PORT);
 });
